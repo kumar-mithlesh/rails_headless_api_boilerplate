@@ -46,4 +46,4 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-
+gem "jsonapi-serializer", "~> 2.2"
