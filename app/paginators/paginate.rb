@@ -1,24 +1,29 @@
-module Paginator
-  class Paginate
-    def initialize(collection, params)
-      @collection = collection
-      @page       = params[:page]
+# frozen_string_literal: true
 
-      per_page_limit = 25
+class Paginate
+  include Pagy::Backend
+  include Pundit::Authorization
 
-      @per_page = if params[:per_page].to_i.between?(1, per_page_limit)
-                    params[:per_page]
-      else
-                    Kaminari.config.default_per_page
-      end
+  def initialize(collection, params, current_user)
+    @current_user = current_user
+    @collection = collection
+    @page = params[:page] || Pagy::DEFAULT[:page]
+
+    per_page_limit = Pagy::DEFAULT[:items]
+
+    @items = if params[:per_page].to_i.between?(1, per_page_limit)
+                params[:per_page]
+    else
+                per_page_limit
     end
-
-    def call
-      collection.page(page).per(per_page)
-    end
-
-    private
-
-    attr_reader :collection, :page, :per_page
   end
+
+  def call
+    pagy, records = pagy(policy_scope(collection), page:, items:)
+    { pagy:, records: }
+  end
+
+  private
+
+  attr_reader :collection, :page, :items, :current_user
 end

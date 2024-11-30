@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
+gem "pg", "~> 1.5.3"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -47,3 +47,11 @@ group :development, :test do
 end
 
 gem "jsonapi-serializer", "~> 2.2"
+gem "ransack", ">= 4.1"
+
+# authentication
+gem "bcrypt", "~> 3.1"
+gem "jwt", "~> 2.2"
+
+# authorization
+gem "pundit", "~> 2.4"
