@@ -71,7 +71,7 @@ module Api
     end
 
     def serializer_klass(serializer_base_name = model_class.to_s)
-      "Api::V1::Platform::#{serializer_base_name}Serializer".constantize
+      "Api::#{serializer_base_name}Serializer".constantize
     end
 
     def custom_serializer_klass

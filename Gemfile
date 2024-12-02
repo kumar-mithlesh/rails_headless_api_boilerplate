@@ -55,3 +55,6 @@ gem "jwt", "~> 2.2"
 
 # authorization
 gem "pundit", "~> 2.4"
+
+# pagination
+gem "pagy", "~> 9.1"

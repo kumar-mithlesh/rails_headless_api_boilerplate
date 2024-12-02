@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Base < ApplicationRecord
-  include Crm::RansackableAttributes
+  include RansackableAttributes
 
   self.abstract_class = true
 

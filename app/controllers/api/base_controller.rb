@@ -4,7 +4,7 @@ module Api
   class BaseController < ActionController::API
     include Pundit::Authorization
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-    rescue_from Exception::AccessDenied, with: :access_denied
+    rescue_from Utilities::Exception::AccessDenied, with: :access_denied
     rescue_from ActionController::ParameterMissing, with: :error_during_processing
     if defined?(JSONAPI::Serializer::UnsupportedIncludeError)
       rescue_from JSONAPI::Serializer::UnsupportedIncludeError,
@@ -13,7 +13,6 @@ module Api
     rescue_from ArgumentError, with: :error_during_processing
     rescue_from ActionDispatch::Http::Parameters::ParseError, with: :error_during_processing
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-    rescue_from Discard::RecordNotDiscarded, with: :prevent_associated_data
 
     around_action :set_timezone
 
@@ -105,7 +104,6 @@ module Api
     def current_user
       return nil unless auth_token
       return @current_user if @current_user
-
       payload = decode_jwt_token(auth_token)
       return render_error_payload(payload.dig(:error, :message), 400) if payload[:error].present?
 
@@ -113,7 +111,7 @@ module Api
     end
 
     def require_current_user
-      raise Exception::AccessDenied if current_user.nil?
+      raise Utilities::Exception::AccessDenied if current_user.nil?
     end
 
     def request_includes
@@ -188,7 +186,7 @@ module Api
     private
 
     def auth_token
-      request.headers[:Authorization]
+      request.headers[:Authorization].split(" ").last if request.headers[:Authorization].present?
     end
 
     def set_timezone(&block)
