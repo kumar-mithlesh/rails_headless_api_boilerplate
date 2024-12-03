@@ -1,31 +1,40 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
+---
 en:
-  hello: "Hello world"
+  active_record:
+    login:
+      success: "%{resource} logged in successfully."
+    logout:
+      success: You have been logged out successfully.
+  errors:
+    access_denied: Access denied
+    messages:
+    missing_attribute_attribute: Missing attribute %{attribute}
+    missing_attributes: Missing attributes
+    missing_parameters: Missing parameters
+    missing_token: Missing token
+    must_specify_api_key: You must specify an API key.
+    not_implemented_method: You must implement discard_associated_data method for
+      this %{resource}"
+    record_not_found_with_ids: 'Record not found for ids: %{ids}.'
+    resource_not_found: Record not found
+    session_token_required: Session token required
+    token_missing: Token missing
+    unauthorized: Unauthorized
+  mailer:
+    user_email:
+      reset_password: Reset Password
+  models:
+    users:
+      incorrect_current_password: incorrect current password
+      incorrect_password: Incorrect password
+      password_change_success: Password changed successfully
+  pundit:
+    not_authorized_error: You are not authorized to perform this action.
+    not_implemented_error: You must define resolve in %{resource}
+  success:
+    confirm_email_resent: Confirmation Email resent successfully.
+    forgot_password_email_sent: Forgot password email sent
+    logged_out: You have been logged out successfully.
+  validation:
+    users:
+      invalid_username: can only contain letters and numbers
