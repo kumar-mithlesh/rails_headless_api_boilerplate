@@ -118,10 +118,6 @@ module Api
       )
     end
 
-    def current_account
-      @current_account ||= Account.find_by(subdomain: Apartment::Tenant.current)
-    end
-
     def model_permitted_attributes
       model_class.json_api_permitted_attributes + metadata_params
     end

@@ -38,11 +38,11 @@ module Api
       }
     end
 
-    def serialize_resource(resource)
-      @resource = resource
+    def serialize_resource(entity)
+      @resource = entity
 
       resource_serializer.new(
-        resource,
+        entity,
         resource_options.merge(params: serializer_params)
       ).serializable_hash
     end
@@ -104,6 +104,7 @@ module Api
     def current_user
       return nil unless auth_token
       return @current_user if @current_user
+
       payload = decode_jwt_token(auth_token)
       return render_error_payload(payload.dig(:error, :message), 400) if payload[:error].present?
 
@@ -177,10 +178,6 @@ module Api
 
     def user_not_authorized
       render_error_payload(I18n.t(:not_authorized_error, scope: :pundit), 403)
-    end
-
-    def set_custom_serializer
-      resource.use_custom_serializer = true
     end
 
     private

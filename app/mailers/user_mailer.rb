@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserMailer < ApplicationMailer
+class UserMailer < BaseMailer
   before_action :current_user, only: %w[forgot_password_email]
 
   def forgot_password_email

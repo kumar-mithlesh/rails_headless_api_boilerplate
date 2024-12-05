@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resource :authentication, only: [], controller: :authentication do
       collection do
+        post :signup
         post :login
         post :logout
         put  :forgot_password

@@ -4,6 +4,16 @@ module Api
   class AuthenticationController < ResourceController
     skip_before_action :require_current_user
 
+    def signup
+      resource = model_class.new(permitted_resource_params)
+
+      if resource.save
+        render_serialized_payload(201) { serialize_resource(resource) }
+      else
+        render_error_payload(resource.errors)
+      end
+    end
+
     def login
       if resource.authenticate(permitted_resource_params[:password])
         render_serialized_payload { serialize_resource(resource) }
@@ -48,7 +58,7 @@ module Api
     end
 
     def resource
-      key = permitted_resource_params[:username_or_email].include?("@") ? "email" : "username"
+      key = permitted_resource_params[:username_or_email]&.include?("@") ? "email" : "username"
       @resource ||= scope.find_by!(key => permitted_resource_params[:username_or_email])
     end
 

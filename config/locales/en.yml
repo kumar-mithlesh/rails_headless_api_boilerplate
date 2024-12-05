@@ -5,6 +5,12 @@ en:
       success: "%{resource} logged in successfully."
     logout:
       success: You have been logged out successfully.
+    reset_password:
+      success: Password reset successfully.
+    signup:
+      success: "%{resource} signed up successfully."
+    destroy:
+      success: "%{resource} deleted successfully."
   errors:
     access_denied: Access denied
     messages:
