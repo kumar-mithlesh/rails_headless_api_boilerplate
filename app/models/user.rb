@@ -1,5 +1,6 @@
 class User < Base
   has_secure_password(validations: false)
+  self.whitelisted_ransackable_attributes = %w[email username]
 
   with_options presence: true do
     validates :password, confirmation: true, if: -> { password_digest_changed? || new_record? }

@@ -12,20 +12,20 @@ module Shared
 
       per_page_limit = Pagy::DEFAULT[:items]
 
-      @items = if params[:per_page].to_i.between?(1, per_page_limit)
-                  params[:per_page]
+      @limit = if params[:per_page].to_i.between?(1, per_page_limit)
+                  params[:per_page].to_i
       else
                   per_page_limit
       end
     end
 
     def call
-      pagy, records = pagy(policy_scope(collection), page:, items:)
+      pagy, records = pagy(policy_scope(collection), page:, limit:)
       { pagy:, records: }
     end
 
     private
 
-    attr_reader :collection, :page, :items, :current_user
+    attr_reader :collection, :page, :limit, :current_user
   end
 end

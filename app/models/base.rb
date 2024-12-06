@@ -5,8 +5,6 @@ class Base < ApplicationRecord
 
   self.abstract_class = true
 
-  attribute :use_custom_serializer, :boolean, default: false
-
   def self.belongs_to_required_by_default
     false
   end
