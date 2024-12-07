@@ -13,8 +13,7 @@ module Api
     rescue_from ArgumentError, with: :error_during_processing
     rescue_from ActionDispatch::Http::Parameters::ParseError, with: :error_during_processing
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
-    around_action :set_timezone
+    rescue_from StandardError, with: :report_error
 
     def content_type
       "application/vnd.api+json"
@@ -196,15 +195,14 @@ module Api
       render_error_payload(I18n.t(:not_authorized_error, scope: :pundit), 403)
     end
 
+    def report_error(exception)
+      error_handler.call(exception: exception, opts: { user: current_user })
+    end
+
     private
 
     def auth_token
       request.headers[:Authorization].split(" ").last if request.headers[:Authorization].present?
-    end
-
-    def set_timezone(&block)
-      timezone = @current_user.is_a?(User) && @current_user.timezone || Time.zone.name
-      Time.use_zone(timezone, &block)
     end
   end
 end

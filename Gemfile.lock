@@ -258,6 +258,12 @@ GEM
       rubocop-rails
     ruby-progressbar (1.13.0)
     securerandom (0.3.2)
+    sentry-rails (5.22.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.22.0)
+    sentry-ruby (5.22.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     solid_cable (3.0.2)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -280,6 +286,7 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
+    stackprof (0.2.26)
     stringio (3.1.2)
     thor (1.3.2)
     thruster (0.1.9)
@@ -331,9 +338,12 @@ DEPENDENCIES
   rails (~> 8.0.0)
   ransack (>= 4.1)
   rubocop-rails-omakase
+  sentry-rails
+  sentry-ruby
   solid_cable
   solid_cache
   solid_queue
+  stackprof
   thruster
   tzinfo-data
 

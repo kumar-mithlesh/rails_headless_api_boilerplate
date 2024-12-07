@@ -58,3 +58,8 @@ gem "pundit", "~> 2.4"
 
 # pagination
 gem "pagy", "~> 9.1"
+
+# Error handling
+gem "stackprof"
+gem "sentry-ruby"
+gem "sentry-rails"
