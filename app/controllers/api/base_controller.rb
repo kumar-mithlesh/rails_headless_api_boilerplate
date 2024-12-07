@@ -66,11 +66,27 @@ module Api
     end
 
     def paginated_collection
-      @paginated_collection ||= collection_paginator.new(collection, params, current_user).call
+      @paginated_collection ||= collection_paginator.new(sorted_collection, params, current_user).call
     end
 
     def collection_paginator
       ::Shared::Paginate
+    end
+
+    def sorted_collection
+      @sorted_collection ||= collection_sorter.new(collection, params, allowed_sort_attributes).call
+    end
+
+    def allowed_sort_attributes
+      default_sort_attributes
+    end
+
+    def default_sort_attributes
+      [ :id, :name, :updated_at, :created_at ]
+    end
+
+    def collection_sorter
+      Api::BaseSorter
     end
 
     def render_serialized_payload(status = 200)

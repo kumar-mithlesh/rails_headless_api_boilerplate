@@ -18,7 +18,8 @@ module Api
         serializer_params,
         params.dig(:filter, :s)&.strip,
         params[:page]&.to_s&.strip,
-        params[:per_page]&.to_s&.strip
+        params[:per_page]&.to_s&.strip,
+        params[:sort]&.to_s&.strip
       ].flatten.join("-")
 
       Digest::MD5.hexdigest(cache_key_parts)

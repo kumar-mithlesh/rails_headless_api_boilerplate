@@ -66,7 +66,7 @@ module Api
     end
 
     def resource_serializer
-      base_name = resource.use_custom_serializer ? custom_serializer_klass : model_class.to_s
+      base_name = model_class.to_s
       serializer_klass(base_name)
     end
 
