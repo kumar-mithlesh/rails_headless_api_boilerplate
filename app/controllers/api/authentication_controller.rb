@@ -4,6 +4,7 @@ module Api
   class AuthenticationController < ResourceController
     skip_before_action :require_current_user
 
+    # @route POST /api/authentication/signup (signup_api_authentication)
     def signup
       resource = model_class.new(permitted_resource_params)
 
@@ -14,6 +15,7 @@ module Api
       end
     end
 
+    # @route POST /api/authentication/login (login_api_authentication)
     def login
       if resource.authenticate(permitted_resource_params[:password])
         render_serialized_payload { serialize_resource(resource) }
@@ -22,6 +24,7 @@ module Api
       end
     end
 
+    # @route POST /api/authentication/logout (logout_api_authentication)
     def logout
       if resource.present?
         render_serialized_payload { { meta: { message: I18n.t(:logged_out, scope: :success) } } }
@@ -30,11 +33,13 @@ module Api
       end
     end
 
+    # @route PUT /api/authentication/forgot_password (forgot_password_api_authentication)
     def forgot_password
       UserMailer.with(user_id: resource.id).forgot_password_email.deliver_later
       render_serialized_payload { { meta: { message: I18n.t(:forgot_password_email_sent, scope: :success) } } }
     end
 
+    # @route PUT /api/authentication/reset_password (reset_password_api_authentication)
     def reset_password
       payload = decode_jwt_token(auth_token)
       return render_error_payload(payload.dig(:error, :message), 400) if payload[:error].present?

@@ -49,3 +49,8 @@ PreCommit:
     enabled: true
     description: 'Run Brakeman security scanner'
     command: ['bundle', 'exec', 'brakeman']
+
+  Chusaku:
+    enabled: true
+    description: 'Run Chusaku to annotate API endpoints'
+    command: ['bundle', 'exec', 'chusaku', '-e', 'app/controllers/api/resource_controller.rb']

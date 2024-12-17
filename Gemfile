@@ -46,6 +46,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "overcommit", require: false
   gem "bullet", group: "development"
+  gem "chusaku", require: false
 end
 
 gem "jsonapi-serializer", "~> 2.2"

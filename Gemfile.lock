@@ -90,6 +90,8 @@ GEM
       uniform_notifier (~> 1.11)
     childprocess (5.1.0)
       logger (~> 1.5)
+    chusaku (1.4.1)
+      railties (>= 3.0)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -340,6 +342,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   bullet
+  chusaku
   debug
   jsonapi-serializer (~> 2.2)
   jwt (~> 2.2)
