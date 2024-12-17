@@ -85,6 +85,8 @@ GEM
     brakeman (6.2.2)
       racc
     builder (3.3.0)
+    childprocess (5.1.0)
+      logger (~> 1.5)
     concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -105,6 +107,7 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
+    iniparse (1.5.0)
     io-console (0.7.2)
     irb (1.14.1)
       rdoc (>= 4.0.0)
@@ -167,6 +170,10 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     ostruct (0.6.1)
+    overcommit (0.64.1)
+      childprocess (>= 0.6.3, < 6)
+      iniparse (~> 1.4)
+      rexml (>= 3.3.9)
     pagy (9.3.2)
     parallel (1.26.3)
     parser (3.3.6.0)
@@ -228,6 +235,7 @@ GEM
     regexp_parser (2.9.2)
     reline (0.5.12)
       io-console (~> 0.5)
+    rexml (3.4.0)
     rubocop (1.69.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -331,6 +339,7 @@ DEPENDENCIES
   jsonapi-serializer (~> 2.2)
   jwt (~> 2.2)
   kamal
+  overcommit
   pagy (~> 9.1)
   pg (~> 1.5.3)
   puma (>= 5.0)
