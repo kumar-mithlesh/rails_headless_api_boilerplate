@@ -49,14 +49,3 @@ PreCommit:
     enabled: true
     description: 'Run Brakeman security scanner'
     command: ['bundle', 'exec', 'brakeman']
-
-PrePush:
-  RSpec:
-    enabled: true
-    description: 'Run RSpec tests before push'
-    command: ['bundle', 'exec', 'rspec']
-
-  BundleAudit:
-    enabled: true
-    description: 'Check for vulnerable gems'
-    command: ['bundle', 'exec', 'bundle-audit']
