@@ -120,7 +120,7 @@ GEM
     json (2.8.2)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
-    jwt (2.9.3)
+    jwt (2.10.1)
       base64
     kamal (2.3.0)
       activesupport (>= 7.0)
@@ -345,7 +345,7 @@ DEPENDENCIES
   chusaku
   debug
   jsonapi-serializer (~> 2.2)
-  jwt (~> 2.2)
+  jwt (~> 2.10)
   kamal
   overcommit
   pagy (~> 9.1)

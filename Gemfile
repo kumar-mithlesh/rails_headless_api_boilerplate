@@ -54,7 +54,7 @@ gem "ransack", ">= 4.1"
 
 # authentication
 gem "bcrypt", "~> 3.1"
-gem "jwt", "~> 2.2"
+gem "jwt", "~> 2.10"
 
 # authorization
 gem "pundit", "~> 2.4"
