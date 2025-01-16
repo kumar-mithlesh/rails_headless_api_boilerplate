@@ -41,7 +41,8 @@ Generate a new API in 5 simple steps:
    rails g model ModelName
    ```
 
-2. **Generate a controller** and inherit it from the resource controller:
+2. **Generate a controller** and inherit it from the resource controller and define the name of the model in the model class all the CRUD methods will be available by default.
+    [See example](app/controllers/api/users_controller.rb)
    ```bash
    rails g controller ControllerName
    ```
