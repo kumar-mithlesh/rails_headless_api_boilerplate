@@ -158,7 +158,7 @@ This boilerplate utilizes a variety of well-maintained third-party gems to provi
 - **[stackprof (development dependency)](https://github.com/tmm1/stackprof)**: Delivers comprehensive profiling to identify performance bottlenecks.
 - **[sentry-ruby (optional)](https://github.com/getsentry/sentry-ruby)**: Enables error tracking and reporting with Sentry.
 - **[sentry-rails (optional)](https://github.com/getsentry/sentry-ruby/tree/master/sentry-rails)**: Integrates Sentry with Rails for seamless error reporting.
-
+- **[overcommit](https://github.com/sds/overcommit)**: Provides hooks to perform task during git commits
 ## Contributing
 
 Contributions are welcome! Please follow these steps to contribute:
